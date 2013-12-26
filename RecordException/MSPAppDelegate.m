@@ -35,6 +35,7 @@ void uncaughtExceptionHandler(NSException *exception)
       尽量不要在此处将crash信息上传，因为App将要退出，不保证能够将信息上传至服务器
      */
 
+    NSLog(@"异常信息->%@",[NSDictionary dictionaryWithObjectsAndKeys:reason,@"reasion",name,@"name",callStackSymbols,@"callStackSymbols", nil]);
     [HandleException AddExceptionMessage:[NSDictionary dictionaryWithObjectsAndKeys:reason,@"reasion",name,@"name",callStackSymbols,@"callStackSymbols", nil]];
 }
 
