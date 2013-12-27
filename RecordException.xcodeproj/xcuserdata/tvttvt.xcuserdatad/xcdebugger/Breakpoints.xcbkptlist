@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RecordException/MSPAppDelegate.m"
-         timestampString = "409740994.802903"
+         timestampString = "409805185.591131"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
          landmarkName = "uncaughtExceptionHandler()"
          landmarkType = "7">
       </FileBreakpoint>

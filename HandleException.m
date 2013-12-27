@@ -1,6 +1,5 @@
 //
 //  HandleException.m
-//  内存泄漏
 //
 //  Created by msp on 13-12-26.
 //

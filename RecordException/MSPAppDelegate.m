@@ -23,20 +23,28 @@
 
 void uncaughtExceptionHandler(NSException *exception)
 {
+
     // 调用堆栈
     NSArray *callStackSymbols = [exception callStackSymbols];
     // 错误reason
     NSString *reason = [exception reason];
     // exception name
     NSString *name = [exception name];
+    NSDate * pDate = [NSDate date];
+    NSTimeInterval timeZoneOffset = [[NSTimeZone systemTimeZone] secondsFromGMT];
+    pDate = [pDate dateByAddingTimeInterval:timeZoneOffset];
+    
     
     /*保存异常信息
       根据自己的需求将crash信息记录下来，下次启动的时候传给服务器。
       尽量不要在此处将crash信息上传，因为App将要退出，不保证能够将信息上传至服务器
      */
 
+#ifdef DEBUG
     NSLog(@"异常信息->%@",[NSDictionary dictionaryWithObjectsAndKeys:reason,@"reasion",name,@"name",callStackSymbols,@"callStackSymbols", nil]);
-    [HandleException AddExceptionMessage:[NSDictionary dictionaryWithObjectsAndKeys:reason,@"reasion",name,@"name",callStackSymbols,@"callStackSymbols", nil]];
+#endif
+    
+    [HandleException AddExceptionMessage:[NSDictionary dictionaryWithObjectsAndKeys:reason,@"reasion",name,@"name",callStackSymbols,@"callStackSymbols",[pDate description],@"date", nil]];
 }
 
 
@@ -57,6 +65,9 @@ void uncaughtExceptionHandler(NSException *exception)
     // 模拟错误信息
     NSArray *array = [NSArray arrayWithObject:@"0"];
     NSLog(@"%@", [array objectAtIndex:1]);
+//    UILabel * pLabel = [[UILabel alloc] init];
+//    [pLabel release];
+//    [pLabel setText:@"test"];
     return YES;
 }
 
